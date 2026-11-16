@@ -2,8 +2,8 @@
 wasm/build/
 FBNeo-master/
 
-# ROMs / BIOS binaries
-*.zip
+# Keep kof98.zip and neogeo.zip for automatic download on the site,
+# ignore other archive/raw rom files.
 *.7z
 *.rom
 readme.html

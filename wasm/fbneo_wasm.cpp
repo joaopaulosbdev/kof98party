@@ -102,6 +102,39 @@ void fbw_set_input(int player, int button, int value)
 }
 
 EMSCRIPTEN_KEEPALIVE
+void fbw_set_input_mask(int player, uint32_t mask)
+{
+    static const int btns[] = {
+        FBHeadlessButtonUp,
+        FBHeadlessButtonDown,
+        FBHeadlessButtonLeft,
+        FBHeadlessButtonRight,
+        FBHeadlessButton1,
+        FBHeadlessButton2,
+        FBHeadlessButton3,
+        FBHeadlessButton4,
+        FBHeadlessButtonStart,
+        FBHeadlessButtonCoin,
+    };
+    for (int i = 0; i < (int)(sizeof(btns) / sizeof(btns[0])); i++) {
+        FBHeadlessSetInput(player, btns[i], (mask >> i) & 1u);
+    }
+}
+
+EMSCRIPTEN_KEEPALIVE
+uint32_t fbw_ram_hash(void)
+{
+    static unsigned char ramBuf[0x10000];
+    unsigned int read = FBHeadlessReadAchievementMemory(0, ramBuf, sizeof(ramBuf));
+    uint32_t h = 2166136261u;
+    for (unsigned int i = 0; i < read; i++) {
+        h ^= ramBuf[i];
+        h *= 16777619u;
+    }
+    return h;
+}
+
+EMSCRIPTEN_KEEPALIVE
 int fbw_save_state(const char* path)
 {
     return FBHeadlessSaveState(path);

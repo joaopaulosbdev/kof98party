@@ -305,7 +305,8 @@ const exportedFns = [
   "_fbw_reset", "_fbw_exit",
   "_fbw_get_width", "_fbw_get_height", "_fbw_get_fps", "_fbw_copy_rgba",
   "_fbw_get_audio_rate", "_fbw_get_audio_frames", "_fbw_get_audio_buffer",
-  "_fbw_set_input", "_fbw_save_state", "_fbw_load_state", "_fbw_set_dip",
+  "_fbw_set_input", "_fbw_set_input_mask", "_fbw_ram_hash",
+  "_fbw_save_state", "_fbw_load_state", "_fbw_set_dip",
 ];
 const exportedRuntime = [
   "FS", "ccall", "cwrap", "UTF8ToString", "HEAPU8", "HEAP16", "HEAP32", "HEAPU32",
