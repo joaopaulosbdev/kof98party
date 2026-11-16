@@ -1,0 +1,13 @@
+# Build artifacts & upstream source
+wasm/build/
+FBNeo-master/
+
+# ROMs / BIOS binaries
+*.zip
+*.7z
+*.rom
+readme.html
+
+# OS / Editor
+.DS_Store
+Thumbs.db
